@@ -8,5 +8,15 @@ public class Crops{
         this.cropName = cropNames[rand];
         this.growthStatus = growthRates[rand];
     }
+    public Crops(String crop, int growth){
+        this.cropName = crop;
+        this.growthStatus = growth;
+    }
+    public String getCropName(){
+        return this.cropName;
+    }
+    public int getGrowth(){
+        return this.growthStatus;
+    }
 
 }
