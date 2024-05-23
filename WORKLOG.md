@@ -1,10 +1,10 @@
 # Work Log
 
-## GROUP MEMBER 1
+## Kyle Lee
 
-### date x
+### 5/23/24
 
-info
+Created a new gitbranch named cropIssue and pushed my change of creating a way to choose a random crop.
 
 ### date y
 
