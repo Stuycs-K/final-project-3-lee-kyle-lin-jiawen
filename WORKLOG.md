@@ -8,9 +8,9 @@
 
 -Added rest of constructers and get methods of the crop class.
 
-### date y
+### 5/24/24
 
-info
+-Created 3 new basic crop classes(corn,grain,wheat).
 
 
 ## GROUP MEMBER 2
