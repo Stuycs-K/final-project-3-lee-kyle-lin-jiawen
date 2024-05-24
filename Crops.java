@@ -3,10 +3,10 @@ public class Crops{
     int growthStatus;
     public Crops(){
         String[] cropNames = {"Corn", "Wheat","Grain"};
-        int[] growthRates = {1,2,3};
+        int[] growthStati = {1,2,3};
         int rand = (int)(Math.random()*3);
         this.cropName = cropNames[rand];
-        this.growthStatus = growthRates[rand];
+        this.growthStatus = growthStati[rand];
     }
     public Crops(String crop, int growth){
         this.cropName = crop;
