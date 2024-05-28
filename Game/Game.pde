@@ -1,9 +1,17 @@
 
 Player p1;
 int speed = 10;
+PImage img;
+PImage img2;
 float easing = 0.05;
 void draw(){
-  background(255);
+  background(173,206,118);
+  fill(255);
+  square(0, -500, 1000);
+  fill(255);
+  square(0, -800, 1000);
+  image(img, 100, 600);
+  image(img2, 700, 100);
   p1.render();
   //p1.move();
   p1.update();
@@ -24,7 +32,8 @@ void mousePressed() {
 }
 
 void setup(){
-  size(800,800);
+  size(1000,1000);
   p1 = new Player(width/2,height/2);
-  
+  img = loadImage("farmplot.png");
+  img2 = loadImage("firsthouse.png");
 }
