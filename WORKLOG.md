@@ -15,7 +15,8 @@
 
 -Turned everything to processing
 
-### 5/25/24
+### 5/27/24
+-Created the player which moves to where the mouse is pressed
 
 ## GROUP MEMBER 2
 
