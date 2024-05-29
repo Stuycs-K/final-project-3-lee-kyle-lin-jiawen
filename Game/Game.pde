@@ -4,6 +4,7 @@ int speed = 10;
 float easing = 0.05;
 PImage img;
 PImage img2;
+Farm farm = new Farm();
 void draw(){
   background(173,206,118);
   fill(255);
