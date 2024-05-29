@@ -4,6 +4,10 @@ int speed = 10;
 float easing = 0.05;
 PImage img;
 PImage img2;
+boolean seedMode = true;
+//click on something to change mode, implement later
+Crops selectedCrop = new Wheat();
+//click to change crop, implement later
 Farm farm = new Farm();
 void draw(){
   background(173,206,118);
@@ -30,6 +34,15 @@ void mousePressed() {
   //}
   //p1.setY(mouseY);
   p1.setTarget(mouseX, mouseY);
+}
+
+void mouseClicked(){
+  if(seedMode){
+    if (mouseX > 100 && mouseX < 650 && mouseY > 600 && mouseY < 900){
+      print("you've sucessfully planted a seed!"); // debugging statement
+      farm.plantSeed(selectedCrop);
+    }
+  }
 }
 
 void setup(){
