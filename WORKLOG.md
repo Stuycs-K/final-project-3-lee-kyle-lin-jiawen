@@ -21,12 +21,18 @@
 ### 5/28/24
 -Added the farm class and changed the crops class to add the harvest feature for each crop
 
-## GROUP MEMBER 2
+## Jiawen Lin
 
-### date x
+### 5/28/24
 
-info
+- Added the background, farm and house graphics; also fixed the interface
 
-### date y
+### 5/29/24
 
-info
+- fixed farm class (Kyle forgot to make a constructor)
+
+- implemented planting mechanic (plants a crop at the next empty location, returns error message is farm is full)
+
+- changed farm planting to include all edge cases
+
+- added seed mode, added planting a crop if click on farm (need to implement displaying it visually, need to get math for the coordinate points)
