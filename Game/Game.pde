@@ -11,11 +11,12 @@ Crops selectedCrop = new Wheat();
 Farm farm = new Farm();
 void draw(){
   background(173,206,118);
-  fill(255);
+  fill(155,103,60);
   square(0, -500, 1000);
-  fill(255);
-  square(0, -800, 1000);
+  fill(135, 206, 250);
+  square(0, -700, 1000);
   image(img, 100, 600);
+  image(img, 550, 600);
   image(img2, 700, 100);
   p1.render();
   //p1.move();
