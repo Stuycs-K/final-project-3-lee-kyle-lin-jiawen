@@ -32,8 +32,14 @@ class Player{
     square(x,y,50);
   }
   void setTarget(float targetX, float targetY) {
-    this.targetX = targetX;
-    this.targetY = targetY;
+    if (targetY >300){
+      this.targetX = targetX;
+      this.targetY = targetY; 
+    }
+    else{
+      this.targetX = targetX;
+      this.targetY = 300; 
+    }
   }
   void update() {
     x = lerp(x, targetX, easing);
