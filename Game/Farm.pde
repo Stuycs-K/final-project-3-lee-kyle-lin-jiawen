@@ -18,6 +18,7 @@ class Farm{
     else{
       col = plantSeedY();
     }
+    farmLand[row][col] = Crop;
     return "Planted a " + Crop.getCropName() + "at location: ("+row+", " + col+")";
   }
   public int plantSeedX(){
@@ -47,5 +48,11 @@ class Farm{
   public void harvest(int row, int col){
     farmLand[row][col] = null;
     //need to add to invetory when inventory class is made
+  }
+  public int getLength(){
+    return farmLand.length;
+  }
+  public Crops getCrop(int x, int y){
+    return farmLand[x][y];
   }
 }
