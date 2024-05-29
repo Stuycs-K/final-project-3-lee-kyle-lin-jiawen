@@ -27,7 +27,7 @@
 
 - Added the background, farm and house graphics; also fixed the interface
 
-### 5/29/24
+### 5/28/24 (Night) 5/29/24 (Morning)
 
 - fixed farm class (Kyle forgot to make a constructor)
 
@@ -36,3 +36,11 @@
 - changed farm planting to include all edge cases
 
 - added seed mode, added planting a crop if click on farm (need to implement displaying it visually, need to get math for the coordinate points)
+
+## 5/29/24 (Class and Night)
+
+- added seed and watering mode (to trigger different actions)
+
+- implemented watering, tested and debugged to check if correct plant is watered when clicked on
+
+- watering imcrements growth (need to implement harvast for when growth reaches maximum)
