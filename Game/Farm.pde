@@ -43,20 +43,23 @@ class Farm{
   }
     
   public String water(){
+    String retVal = "";
     int xMouse = mouseX;
     int yMouse = mouseY;
     int x = 135;
     int y = 620;
-    x = 135; 
-    y+=50;
     for(int i = 0; i < farm.getLength(); i ++){
-    for(int j = 0; j < farm.getLength(); j ++){
-      if(xMouse >=x && xMouse <= x+70 && yMouse >= y && yMouse <= y+50){
-        
+      for(int j = 0; j < farm.getLength(); j ++){
+        if(xMouse >=x && xMouse <= x+70 && yMouse >= y && yMouse <= y+50){
+          farmLand[i][j].setGrowth();
+          retVal = "You have watered the plant at: ("+i+", "+j+")";
+        }
+        x+=70;
       }
-      x+=70;
+      x = 135;
+      y+=50;
     }
-    return "";
+    return retVal;
   }
   public void harvest(int row, int col){
     farmLand[row][col] = null;

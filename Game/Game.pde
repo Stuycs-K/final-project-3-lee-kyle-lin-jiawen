@@ -24,7 +24,10 @@ void draw(){
   p1.update();
   drawFarm();
 }
-
+void keyPressed(){
+  seedMode= !(seedMode);
+  waterMode = !(waterMode);
+}
 void drawFarm(){
   int x = 135;
   int y = 620;
