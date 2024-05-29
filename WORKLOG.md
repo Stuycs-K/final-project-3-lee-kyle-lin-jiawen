@@ -18,6 +18,9 @@
 ### 5/27/24
 -Created the player which moves to where the mouse is pressed
 
+### 5/28/24
+-Added the farm class and changed the crops class to add the harvest feature for each crop
+
 ## GROUP MEMBER 2
 
 ### date x
