@@ -37,7 +37,7 @@
 
 - added seed mode, added planting a crop if click on farm (need to implement displaying it visually, need to get math for the coordinate points)
 
-## 5/29/24 (Class and Night)
+### 5/29/24 (Class and Night)
 
 - added seed and watering mode (to trigger different actions)
 
