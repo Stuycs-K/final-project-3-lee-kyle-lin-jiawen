@@ -42,8 +42,21 @@ class Farm{
     return -1;
   }
     
-  public void water(int row, int col){
-    farmLand[row][col].setGrowth();
+  public String water(){
+    int xMouse = mouseX;
+    int yMouse = mouseY;
+    int x = 135;
+    int y = 620;
+    x = 135; 
+    y+=50;
+    for(int i = 0; i < farm.getLength(); i ++){
+    for(int j = 0; j < farm.getLength(); j ++){
+      if(xMouse >=x && xMouse <= x+70 && yMouse >= y && yMouse <= y+50){
+        
+      }
+      x+=70;
+    }
+    return "";
   }
   public void harvest(int row, int col){
     farmLand[row][col] = null;
