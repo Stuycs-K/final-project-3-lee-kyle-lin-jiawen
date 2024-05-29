@@ -61,13 +61,13 @@ void mousePressed() {
 
 void mouseClicked(){
   if(seedMode){
-    if (mouseX > 100 && mouseX < 650 && mouseY > 600 && mouseY < 880){
+    if (mouseX > 100 && mouseX < 400 && mouseY > 600 && mouseY < 880){
       print(farm.plantSeed(selectedCrop));
       drawFarm();
     }
   }
   if(waterMode){
-    if (mouseX > 100 && mouseX < 650 && mouseY > 600 && mouseY < 880){
+    if (mouseX > 100 && mouseX < 400 && mouseY > 600 && mouseY < 880){
       print(farm.water());
       drawFarm();
     }
