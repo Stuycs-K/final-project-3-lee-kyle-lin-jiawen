@@ -21,6 +21,9 @@
 ### 5/28/24
 -Added the farm class and changed the crops class to add the harvest feature for each crop
 
+### 5/29/24
+-Prevented player from moving past the horizon line
+
 ## Jiawen Lin
 
 ### 5/28/24
