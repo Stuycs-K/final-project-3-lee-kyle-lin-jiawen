@@ -4,42 +4,28 @@ class Farm{
     farmLand = new Crops[4][4];  
   }
   public String plantSeed(Crops Crop){
-    int row = 0;
-    int col = 0;
-    if(plantSeedX() == -1){
-      return "Farm is full, unable to plant more crops!";
-    }
-    else{
-      row = plantSeedX();
-    }
-    if(plantSeedY() == -1){
-      return "Farm is full, unable to plant more crops!";
-    }
-    else{
-      col = plantSeedY();
-    }
-    farmLand[row][col] = Crop;
-    return "Planted a " + Crop.getCropName() + "at location: ("+row+", " + col+")";
-  }
-  public int plantSeedX(){
-    for(int i = 0; i < farmLand.length; i++){
-      for(int j = 0; j < farmLand[0].length; j ++){
-        if(farmLand[i][j] == null){
-          return i;
+    String retVal = "";
+    int xMouse = mouseX;
+    int yMouse = mouseY;
+    int x = 135;
+    int y = 620;
+    for(int i = 0; i < farm.getLength(); i ++){
+      for(int j = 0; j < farm.getLength(); j ++){
+        if(xMouse >=x && xMouse <= x+70 && yMouse >= y && yMouse <= y+50){
+          if(farmLand[i][j] == null){
+            farmLand[i][j] = Crop;
+            retVal = "You have planted a "+Crop.getCropName()+" at: ("+i+", "+j+")";
+          }
+          else{
+            retVal = "You already have a plant here! Cannot plant more.";
+          }
         }
+        x+=70;
       }
+      x = 135;
+      y+=50;
     }
-    return -1;
-  }
-  public int plantSeedY(){
-    for(int i = 0; i < farmLand.length; i++){
-      for(int j = 0; j < farmLand[0].length; j ++){
-        if(farmLand[i][j] == null){
-          return j;
-        }
-      }
-    }
-    return -1;
+    return retVal;
   }
     
   public String water(){

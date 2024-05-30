@@ -34,7 +34,7 @@ class Player{
   }
   void setTarget(float targetX, float targetY) {
     this.targetX = targetX-40;
-    this.targetY = targetY-50;
+    this.targetY = targetY-60;
   }
   void update() {
     

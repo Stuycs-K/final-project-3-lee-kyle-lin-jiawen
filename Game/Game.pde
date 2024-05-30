@@ -19,10 +19,10 @@ void draw(){
   image(img, 100, 600);
   //image(img, 550, 600); for when we get shop working
   image(img2, 700, 100);
+  drawFarm();
   p1.render();
   //p1.move();
   p1.update();
-  drawFarm();
 }
 void keyPressed(){
   seedMode= !(seedMode);
