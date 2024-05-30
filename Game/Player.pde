@@ -7,6 +7,7 @@ class Player{
   float targetX;
   float targetY;
   float easing = 0.05;
+  PImage sprite = loadImage("player.png");
   Player(float startingX, float startingY){
     x = startingX;
     y = startingY;
@@ -29,16 +30,20 @@ class Player{
     return y;
   }
   void render(){
-    square(x,y,50);
+    image(sprite, x,y);
   }
   void setTarget(float targetX, float targetY) {
-    this.targetX = targetX;
-    this.targetY = targetY;
+    this.targetX = targetX-40;
+    this.targetY = targetY-50;
   }
   void update() {
+    
     x = lerp(x, targetX, easing);
     y = lerp(y, targetY, easing);
   }
-
+  
+  void changeSprite(PImage img){
+    sprite = img;
+  }
 
 }

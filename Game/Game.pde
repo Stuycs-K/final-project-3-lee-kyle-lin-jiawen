@@ -63,14 +63,23 @@ void mouseClicked(){
   if(seedMode){
     if (mouseX > 100 && mouseX < 400 && mouseY > 600 && mouseY < 880){
       print(farm.plantSeed(selectedCrop));
+      PImage planting = loadImage("planting.png");
+      p1.changeSprite(planting);
+      p1.render();
       drawFarm();
     }
   }
   if(waterMode){
     if (mouseX > 100 && mouseX < 400 && mouseY > 600 && mouseY < 880){
       print(farm.water());
+      PImage watering = loadImage("watering.png");
+      p1.changeSprite(watering);
+      p1.render();
       drawFarm();
     }
+  }
+  else{
+    p1.changeSprite(loadImage("player.png"));
   }
 }
 
