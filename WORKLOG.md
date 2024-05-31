@@ -47,3 +47,9 @@
 - implemented watering, tested and debugged to check if correct plant is watered when clicked on
 
 - watering imcrements growth (need to implement harvast for when growth reaches maximum)
+
+### 5/30/24
+
+- made planting seeds like watering (click to plant)
+
+- added sprites to player, changes when watering (doesn't work for planting a seed, but not sure why)
