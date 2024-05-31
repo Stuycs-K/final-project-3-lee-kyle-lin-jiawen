@@ -7,6 +7,7 @@ int speed = 10;
 float easing = 0.05;
 PImage img;
 PImage img2;
+PImage sky;
 boolean seedMode = true;
 boolean waterMode = false;
 //click on something to change mode, implement later
@@ -19,6 +20,7 @@ void draw(){
   square(0, -500, 1000);
   fill(135, 206, 250);//blue
   square(0, -700, 1000);
+  image(sky, 0, 0);
   image(img, 100, 600);
   //image(img, 550, 600); for when we get shop working
   image(img2, 700, 100);
@@ -107,6 +109,8 @@ void setup(){
   p1 = new Player(width/2,height/2);
   img = loadImage("farmplot.png");
   img2 = loadImage("firsthouse.png");
+  sky = loadImage("sky.jpg");
+  sky.resize(1000, 300);
   
   //
   circleColor = color(53, 95, 59);
