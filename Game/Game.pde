@@ -8,14 +8,20 @@ float easing = 0.05;
 PImage img;
 PImage img2;
 PImage sky;
+PImage grass;
+PImage pond;
 boolean seedMode = true;
 boolean waterMode = false;
+int water = 0;
+//
+//
 //click on something to change mode, implement later
 Crops selectedCrop = new Wheat();
 //click to change crop, implement later
 Farm farm = new Farm();
 void draw(){
   background(173,206,118);
+  image(grass, 0, 500);
   fill(155,103,60);//brown
   square(0, -500, 1000);
   fill(135, 206, 250);//blue
@@ -24,6 +30,7 @@ void draw(){
   image(img, 100, 600);
   //image(img, 550, 600); for when we get shop working
   image(img2, 700, 100);
+  image(pond, -250, 250);
   drawFarm();
   p1.render();
   //p1.move();
@@ -58,6 +65,9 @@ void drawFarm(){
     x = 135; 
     y+=50;
   }
+  textSize(30);
+  fill(0);
+  text("water: "+water, 750, 900);
 }
 
 void mousePressed() {
@@ -92,11 +102,17 @@ void mouseClicked(){
   }
   if(waterMode){
     if (mouseX > 100 && mouseX < 400 && mouseY > 600 && mouseY < 880){
-      print(farm.water());
-      PImage watering = loadImage("watering.png");
-      p1.changeSprite(watering);
-      p1.render();
-      drawFarm();
+      if(water>0){
+        water--;
+        print(farm.water());
+        PImage watering = loadImage("watering.png");
+        p1.changeSprite(watering);
+        p1.render();
+        drawFarm();
+      }
+      else{
+        print("There's no water in the bucket! Please fetch more water.");
+      }
     }
   }
   else{
@@ -107,10 +123,13 @@ void mouseClicked(){
 void setup(){
   size(1000,1000);
   p1 = new Player(width/2,height/2);
-  img = loadImage("farmplot.png");
+  img = loadImage("farm.png");
   img2 = loadImage("firsthouse.png");
   sky = loadImage("sky.jpg");
   sky.resize(1000, 300);
+  grass = loadImage("grassbetter.png");
+  grass.resize(1000, 500);
+  pond = loadImage("pond.png");
   
   //
   circleColor = color(53, 95, 59);
@@ -121,7 +140,7 @@ void setup(){
 }
 void update(int x, int y) {
   
-  if ( overCircle(circleX, circleY, circleSize) ) {
+  if (overCircle(circleX, circleY, circleSize) ) {
     circleOver = true;
     
   } 
