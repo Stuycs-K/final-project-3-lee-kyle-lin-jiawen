@@ -26,8 +26,6 @@ void draw(){
   p1.render();
   //p1.move();
   p1.update();
-<<<<<<< HEAD
-=======
   drawFarm();
   //
   update(mouseX, mouseY);
@@ -38,7 +36,6 @@ void draw(){
   }
   stroke(0);
   ellipse(circleX, circleY, circleSize, circleSize);
->>>>>>> 8767daa6ed7943aaba4dd1aaebe66a3416ff317c
 }
 void keyPressed(){
   seedMode= !(seedMode);
