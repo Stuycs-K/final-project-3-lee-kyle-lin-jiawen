@@ -1,4 +1,7 @@
-
+int circleX, circleY; 
+int circleSize = 93;
+color circleColor, circleHighlight;
+boolean circleOver = false;
 Player p1;
 int speed = 10;
 float easing = 0.05;
@@ -23,6 +26,19 @@ void draw(){
   p1.render();
   //p1.move();
   p1.update();
+<<<<<<< HEAD
+=======
+  drawFarm();
+  //
+  update(mouseX, mouseY);
+  if (circleOver) {
+    fill(circleHighlight);
+  } else {
+    fill(circleColor);
+  }
+  stroke(0);
+  ellipse(circleX, circleY, circleSize, circleSize);
+>>>>>>> 8767daa6ed7943aaba4dd1aaebe66a3416ff317c
 }
 void keyPressed(){
   seedMode= !(seedMode);
@@ -57,6 +73,12 @@ void mousePressed() {
   //}
   //p1.setY(mouseY);
   p1.setTarget(mouseX, mouseY);
+  if (circleOver) {
+    seedMode = !seedMode;
+    waterMode = !waterMode;
+    System.out.println("Seed Mode is: " + seedMode);
+    System.out.println("Water Mode is: " + waterMode);
+  }
 }
 
 void mouseClicked(){
@@ -88,4 +110,30 @@ void setup(){
   p1 = new Player(width/2,height/2);
   img = loadImage("farmplot.png");
   img2 = loadImage("firsthouse.png");
+  
+  //
+  circleColor = color(53, 95, 59);
+  circleHighlight = color(204);
+  circleX = 800;
+  circleY = 800;
+  ellipseMode(CENTER);
+}
+void update(int x, int y) {
+  
+  if ( overCircle(circleX, circleY, circleSize) ) {
+    circleOver = true;
+    
+  } 
+  else{
+    circleOver = false;
+  }
+}
+boolean overCircle(int x, int y, int diameter) {
+  float disX = x - mouseX;
+  float disY = y - mouseY;
+  if (sqrt(sq(disX) + sq(disY)) < diameter/2 ) {
+    return true;
+  } else {
+    return false;
+  }
 }

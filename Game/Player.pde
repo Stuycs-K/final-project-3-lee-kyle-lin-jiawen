@@ -33,8 +33,19 @@ class Player{
     image(sprite, x,y);
   }
   void setTarget(float targetX, float targetY) {
+<<<<<<< HEAD
     this.targetX = targetX-40;
     this.targetY = targetY-60;
+=======
+    if (targetY >300){
+      this.targetX = targetX;
+      this.targetY = targetY; 
+    }
+    else{
+      this.targetX = targetX;
+      this.targetY = 300; 
+    }
+>>>>>>> 8767daa6ed7943aaba4dd1aaebe66a3416ff317c
   }
   void update() {
     
