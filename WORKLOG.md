@@ -24,6 +24,9 @@
 ### 5/29/24
 -Prevented player from moving past the horizon line
 
+### 6/2/24 continuation of Friday's class which I forgot to push
+-Added items/inventory class/picture
+
 ## Jiawen Lin
 
 ### 5/28/24
