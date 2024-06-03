@@ -15,6 +15,7 @@ PImage gold;
 PImage shop;
 PImage can;
 PImage seedling;
+PImage seed;
 boolean seedMode = true;
 boolean waterMode = false;
 int water = 20;
@@ -66,6 +67,10 @@ void draw(){
     seedling.resize(30,30);
     image(seedling,70,45);
   }
+  if(pinventory.inInventory("Harvest")){
+    seed.resize(65,65);
+    image(seed,100,27);
+  }
   //
   update(mouseX, mouseY);
   if (circleOver) {
@@ -101,7 +106,6 @@ void keyPressed(){
 void drawFarm(){
   int x = 135;
   int y = 620;
-  PImage seed = loadImage("seeds.png");
   //mouseX > 100 && mouseX < 650 && mouseY > 600 && mouseY < 880
   for(int i = 0; i < farm.getLength(); i ++){
     for(int j = 0; j < farm.getLength(); j ++){
@@ -200,6 +204,7 @@ void setup(){
   shop = loadImage("Cart.png");
   seedling = loadImage("Seedling.png");
   can = loadImage("Water.png");
+  seed = loadImage("seeds.png");
   //
   circleColor = color(53, 95, 59);
   circleHighlight = color(204);

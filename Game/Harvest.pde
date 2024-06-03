@@ -3,10 +3,10 @@ public class Harvest extends Item{
     super(Name,Cost);
   }
   public Harvest(){
-    this("Crop",10);
+    this("Harvest",10);
   }
   public String getName() {
-    return "Crop";
+    return "Harvest";
   }
   
   public int getPrice() {
