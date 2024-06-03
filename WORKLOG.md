@@ -27,6 +27,9 @@
 ### 6/2/24 continuation of Friday's class which I forgot to push
 -Added items/inventory class/picture
 
+### 6/3/24
+-Added shop and buying basic items
+
 ## Jiawen Lin
 
 ### 5/28/24
