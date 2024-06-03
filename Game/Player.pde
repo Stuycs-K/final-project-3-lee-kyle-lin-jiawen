@@ -7,7 +7,7 @@ class Player{
   float targetX;
   float targetY;
   float easing = 0.05;
-  PImage sprite = loadImage("player.png");
+  PImage sprite;
   Player(float startingX, float startingY){
     x = startingX;
     y = startingY;
@@ -16,6 +16,7 @@ class Player{
     speed = 10;
     this.targetX = startingX;
     this.targetY = startingY;
+    sprite = loadImage("player.png");
   }
   public void setX(float x){
     this.x = x;

@@ -16,7 +16,7 @@ PImage shop;
 PImage can;
 PImage seedling;
 PImage seed;
-boolean seedMode = true;
+boolean seedMode = false;
 boolean waterMode = false;
 int water = 20;
 Coins balance;
@@ -112,6 +112,7 @@ void drawFarm(){
       if(farm.getCrop(i, j) != null){
         if(farm.getCrop(i, j).canHarvest){
           textbox.update("Plant harvested!");
+          farm.farmLand[i][j].canHarvest = false;
           farm.farmLand[i][j] = null;
           Harvest crop = new Harvest();
           pinventory.addItem(crop);
