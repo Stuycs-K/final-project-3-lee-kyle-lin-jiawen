@@ -6,15 +6,25 @@ public class Inventory{
   }
   
   public void addItem(Item item) {
-
+    if (playerInventory.size() < 9){
+      playerInventory.add(item);
+    }
   }
   
-  public void removeItem(String itemName, int quantity) {
-
+  public void removeItem(String itemName) {
+    for(int i = 0; i < playerInventory.size(); i++){
+      if (playerInventory.get(i).getName().equals(itemName)){
+        playerInventory.remove(i);
+    }
   }
-  
+  }
   public boolean inInventory(String itemName) {
-    return true;
+    for(int i = 0; i < playerInventory.size(); i++){
+      if (playerInventory.get(i).getName().equals(itemName)){
+        return true;
+    }
+  }
+    return false;
   }
   
   public Item getItem(int col) {
