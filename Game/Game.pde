@@ -17,11 +17,14 @@ PImage can;
 PImage seedling;
 boolean seedMode = true;
 boolean waterMode = false;
-int water = 0;
+int water = 20;
 Coins balance;
 Inventory pinventory;
 boolean shopMenuOpen = false;
 Shop theShop;
+Textbox textbox = new Textbox();
+boolean hasCan = false;
+boolean hasSeeds = false;
 //
 //
 //click on something to change mode, implement later
@@ -72,18 +75,27 @@ void draw(){
   }
   stroke(0);
   ellipse(circleX, circleY, circleSize, circleSize);
+  textbox.display();
 }
 void keyPressed(){
-  seedMode= !(seedMode);
-  waterMode = !(waterMode);
   if (key == 's' || key == 'S') {
     shopMenuOpen = !shopMenuOpen;
   }
   if (key == '1' && shopMenuOpen) {
     theShop.buyItem("Watering Can");
+    hasCan = true; 
   }
   if (key == '2' && shopMenuOpen) {
     theShop.buyItem("Seeds");
+    hasSeeds = true;
+  }
+  if (key == 'w' || key == 'W') {
+    seedMode= false;
+    waterMode = true;
+  }
+  if (key == 'p' || key == 'P') {
+    seedMode= true;
+    waterMode = false;
   }
 }
 void drawFarm(){
@@ -94,7 +106,15 @@ void drawFarm(){
   for(int i = 0; i < farm.getLength(); i ++){
     for(int j = 0; j < farm.getLength(); j ++){
       if(farm.getCrop(i, j) != null){
-        image(seed, x, y, 80, 80);
+        if(farm.getCrop(i, j).canHarvest){
+          textbox.update("Plant harvested!");
+          farm.farmLand[i][j] = null;
+          Harvest crop = new Harvest();
+          pinventory.addItem(crop);
+        }
+        else{
+          image(seed, x, y, 80, 80);
+        }
       }
       x+=70;
     }
@@ -105,7 +125,7 @@ void drawFarm(){
   fill(0);
   text("water: "+water, 750, 900);
   text(balance.getCoins(),760,60);
-  text("Press S to Open Shop", 700, 1000);
+  text("Press S to Open Shop", 700, 950);
 }
 
 void mousePressed() {
@@ -120,18 +140,15 @@ void mousePressed() {
   //}
   //p1.setY(mouseY);
   p1.setTarget(mouseX, mouseY);
-  if (circleOver) {
-    seedMode = !seedMode;
-    waterMode = !waterMode;
-    System.out.println("Seed Mode is: " + seedMode);
-    System.out.println("Water Mode is: " + waterMode);
-  }
 }
 
 void mouseClicked(){
   if(seedMode){
-    if (mouseX > 100 && mouseX < 400 && mouseY > 600 && mouseY < 880){
-      print(farm.plantSeed(selectedCrop));
+    if(hasSeeds == false){
+        textbox.update("You do not have seeds, please buy some!");
+      }
+    else if (mouseX > 100 && mouseX < 400 && mouseY > 600 && mouseY < 880){
+      textbox.update(farm.plantSeed(selectedCrop));
       PImage planting = loadImage("planting.png");
       p1.changeSprite(planting);
       p1.render();
@@ -140,21 +157,31 @@ void mouseClicked(){
   }
   if(waterMode){
     if (mouseX > 100 && mouseX < 400 && mouseY > 600 && mouseY < 880){
-      if(water>0){
+      if(hasCan == false){
+        textbox.update("You do not have a watering can, please buy one!");
+      }
+      else if(water>0){
         water--;
-        print(farm.water());
+        textbox.update(farm.water());
         PImage watering = loadImage("watering.png");
         p1.changeSprite(watering);
         p1.render();
         drawFarm();
       }
       else{
-        print("There's no water in the bucket! Please fetch more water.");
+        textbox.update("There's no water in the bucket! Please fetch more water.");
       }
     }
   }
   else{
     p1.changeSprite(loadImage("player.png"));
+  }
+  if (circleOver) {
+    seedMode = !seedMode;
+    waterMode = !waterMode;
+    System.out.println("Seed Mode is: " + seedMode);
+    System.out.println("Water Mode is: " + waterMode);
+    textbox.update("Seed Mode is: " + seedMode+"\n"+"Water Mode is: " + waterMode);
   }
 }
 

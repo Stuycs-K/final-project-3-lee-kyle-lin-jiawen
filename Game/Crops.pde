@@ -2,7 +2,7 @@ public class Crops{
     String cropName;
     int growthStatus;
     int currentGrowth;
-    boolean canHarvest;
+    boolean canHarvest = false;
     public Crops(){
         String[] cropNames = {"Corn", "Wheat","Grain"};
         int[] growthStati = {1,2,3};
@@ -28,7 +28,6 @@ public class Crops{
       currentGrowth += 1;
       if (currentGrowth >= growthStatus){
          canHarvest = true;
-         Harvest();
       }
     }
     public void Harvest(){

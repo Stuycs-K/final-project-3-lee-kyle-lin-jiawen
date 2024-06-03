@@ -30,6 +30,5 @@ public class Inventory{
   public Item getItem(int col) {
     return playerInventory.get(col);
   }
-  
 
 }
