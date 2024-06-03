@@ -11,9 +11,17 @@ PImage inventory;
 PImage sky;
 PImage grass;
 PImage pond;
+PImage gold;
+PImage shop;
+PImage can;
+PImage seedling;
 boolean seedMode = true;
 boolean waterMode = false;
 int water = 0;
+Coins balance;
+Inventory pinventory;
+boolean shopMenuOpen = false;
+Shop theShop;
 //
 //
 //click on something to change mode, implement later
@@ -33,11 +41,28 @@ void draw(){
   image(img2, 700, 100);
   image(pond, -250, 250);
   image(inventory, 0,20);
+  image(gold,700,20);
+  shop.resize(300,200);
+  image(shop,200,150);
   drawFarm();
   p1.render();
   //p1.move();
   p1.update();
   drawFarm();
+  if(shopMenuOpen){
+    textSize(30);
+    fill(0);
+    text("Press 1 to buy Water", 100, 140);
+    text("Press 2 to buy Seeds", 400, 140);
+  }
+  if(pinventory.inInventory("Watering Can")){
+    can.resize(60,60);
+    image(can,10,30);
+  }
+  if(pinventory.inInventory("Seeds")){
+    seedling.resize(30,30);
+    image(seedling,70,45);
+  }
   //
   update(mouseX, mouseY);
   if (circleOver) {
@@ -51,6 +76,15 @@ void draw(){
 void keyPressed(){
   seedMode= !(seedMode);
   waterMode = !(waterMode);
+  if (key == 's' || key == 'S') {
+    shopMenuOpen = !shopMenuOpen;
+  }
+  if (key == '1' && shopMenuOpen) {
+    theShop.buyItem("Watering Can");
+  }
+  if (key == '2' && shopMenuOpen) {
+    theShop.buyItem("Seeds");
+  }
 }
 void drawFarm(){
   int x = 135;
@@ -70,6 +104,8 @@ void drawFarm(){
   textSize(30);
   fill(0);
   text("water: "+water, 750, 900);
+  text(balance.getCoins(),760,60);
+  text("Press S to Open Shop", 700, 1000);
 }
 
 void mousePressed() {
@@ -133,13 +169,20 @@ void setup(){
   grass = loadImage("grassbetter.png");
   grass.resize(1000, 500);
   pond = loadImage("pond.png");
-  
+  gold = loadImage("Gold.png");
+  shop = loadImage("Cart.png");
+  seedling = loadImage("Seedling.png");
+  can = loadImage("Water.png");
   //
   circleColor = color(53, 95, 59);
   circleHighlight = color(204);
   circleX = 800;
   circleY = 800;
+  balance = new Coins(999);
+  pinventory = new Inventory();
+  theShop = new Shop(pinventory, balance);
   ellipseMode(CENTER);
+  
 }
 void update(int x, int y) {
   
