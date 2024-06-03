@@ -39,7 +39,10 @@ class Farm{
         if(xMouse >=x && xMouse <= x+70 && yMouse >= y && yMouse <= y+50){
           if(farmLand[i][j] != null){
             farmLand[i][j].setGrowth();
-          retVal = "You have watered the plant at: ("+i+", "+j+")";
+            retVal = "You have watered the plant at: ("+i+", "+j+")";
+          }
+          else{
+            retVal = "There is no plant here, please plant a seed first!";
           }
         }
         x+=70;
