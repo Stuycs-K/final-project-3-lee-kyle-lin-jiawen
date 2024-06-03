@@ -7,6 +7,7 @@ int speed = 10;
 float easing = 0.05;
 PImage img;
 PImage img2;
+PImage inventory;
 PImage sky;
 PImage grass;
 PImage pond;
@@ -31,6 +32,7 @@ void draw(){
   //image(img, 550, 600); for when we get shop working
   image(img2, 700, 100);
   image(pond, -250, 250);
+  image(inventory, 0,20);
   drawFarm();
   p1.render();
   //p1.move();
@@ -126,6 +128,7 @@ void setup(){
   img = loadImage("farm.png");
   img2 = loadImage("firsthouse.png");
   sky = loadImage("sky.jpg");
+  inventory = loadImage("Inventory.png");
   sky.resize(1000, 300);
   grass = loadImage("grassbetter.png");
   grass.resize(1000, 500);
