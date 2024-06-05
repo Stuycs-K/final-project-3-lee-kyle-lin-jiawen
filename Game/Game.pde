@@ -13,12 +13,14 @@ PImage img2;
 PImage inventory;
 PImage sky;
 PImage grass;
+PImage box;
 PImage pond;
 PImage gold;
 PImage shop;
 PImage can;
 PImage seedling;
 PImage seed;
+PImage playerSprite;
 boolean seedMode = false;
 boolean waterMode = false;
 int water = 20;
@@ -83,7 +85,13 @@ void draw(){
   }
   stroke(0);
   //ellipse(newCircleX, newCircleY, circleSize, circleSize);
+  box = loadImage("dialouge.png");
+  box.resize(650,550);
+  image(box, 410, 300);
   textbox.display();
+  playerSprite = loadImage("player.png");
+  playerSprite.resize(100, 150);
+  image(playerSprite, 830, 620);
 }
 void keyPressed(){
   if (key == 's' || key == 'S') {
