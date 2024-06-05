@@ -1,5 +1,5 @@
 int circleX, circleY; 
-int circleSize = 93;
+int circleSize = 43;
 color circleColor, circleHighlight;
 boolean circleOver = false;
 Player p1;
@@ -79,7 +79,7 @@ void draw(){
     fill(circleColor);
   }
   stroke(0);
-  ellipse(circleX, circleY, circleSize, circleSize);
+  //ellipse(circleX, circleY, circleSize, circleSize);
   textbox.display();
 }
 void keyPressed(){
@@ -209,8 +209,8 @@ void setup(){
   //
   circleColor = color(53, 95, 59);
   circleHighlight = color(204);
-  circleX = 800;
-  circleY = 800;
+  circleX = 40;
+  circleY = 60;
   balance = new Coins(999);
   pinventory = new Inventory();
   theShop = new Shop(pinventory, balance);
