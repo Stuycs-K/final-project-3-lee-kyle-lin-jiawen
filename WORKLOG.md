@@ -30,6 +30,9 @@
 ### 6/3/24
 -Added shop and buying basic items
 
+### 6/3/24
+-Two buttons changed to at the top of the inventory
+
 ## Jiawen Lin
 
 ### 5/28/24
