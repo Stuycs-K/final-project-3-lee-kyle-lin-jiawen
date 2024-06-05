@@ -4,34 +4,34 @@
 
 ### 5/23/24
 
--Created a new gitbranch named cropIssue and pushed my change of creating a way to choose a random crop. 
+- Created a new gitbranch named cropIssue and pushed my change of creating a way to choose a random crop. 
 
--Added rest of constructers and get methods of the crop class.
+- Added rest of constructers and get methods of the crop class.
 
 
 ### 5/24/24
 
--Created 3 new basic crop classes(corn,grain,wheat).
+- Created 3 new basic crop classes(corn,grain,wheat).
 
--Turned everything to processing
+- Turned everything to processing
 
 ### 5/27/24
--Created the player which moves to where the mouse is pressed
+- Created the player which moves to where the mouse is pressed
 
 ### 5/28/24
--Added the farm class and changed the crops class to add the harvest feature for each crop
+- Added the farm class and changed the crops class to add the harvest feature for each crop
 
 ### 5/29/24
--Prevented player from moving past the horizon line
+- Prevented player from moving past the horizon line
 
 ### 6/2/24 continuation of Friday's class which I forgot to push
--Added items/inventory class/picture
+- Added items/inventory class/picture
 
 ### 6/3/24
--Added shop and buying basic items
+- Added shop and buying basic items
 
 ### 6/3/24
--Two buttons changed to at the top of the inventory
+- Two buttons changed to at the top of the inventory
 
 ## Jiawen Lin
 
