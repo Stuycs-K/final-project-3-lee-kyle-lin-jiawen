@@ -2,6 +2,9 @@ int circleX, circleY;
 int circleSize = 43;
 color circleColor, circleHighlight;
 boolean circleOver = false;
+int newCircleX, newCircleY; 
+int newCircleSize = 43;
+boolean newCircleOver = false;
 Player p1;
 int speed = 10;
 float easing = 0.05;
@@ -79,7 +82,7 @@ void draw(){
     fill(circleColor);
   }
   stroke(0);
-  //ellipse(circleX, circleY, circleSize, circleSize);
+  //ellipse(newCircleX, newCircleY, circleSize, circleSize);
   textbox.display();
 }
 void keyPressed(){
@@ -182,8 +185,15 @@ void mouseClicked(){
     p1.changeSprite(loadImage("player.png"));
   }
   if (circleOver) {
-    seedMode = !seedMode;
+    //seedMode = !seedMode;
     waterMode = !waterMode;
+    System.out.println("Seed Mode is: " + seedMode);
+    System.out.println("Water Mode is: " + waterMode);
+    textbox.update("Seed Mode is: " + seedMode+"\n"+"Water Mode is: " + waterMode);
+  }
+    if (newCircleOver) {
+    seedMode = !seedMode;
+    //waterMode = !waterMode;
     System.out.println("Seed Mode is: " + seedMode);
     System.out.println("Water Mode is: " + waterMode);
     textbox.update("Seed Mode is: " + seedMode+"\n"+"Water Mode is: " + waterMode);
@@ -211,6 +221,8 @@ void setup(){
   circleHighlight = color(204);
   circleX = 40;
   circleY = 60;
+  newCircleX = 85;
+  newCircleY = 60;
   balance = new Coins(999);
   pinventory = new Inventory();
   theShop = new Shop(pinventory, balance);
@@ -219,12 +231,15 @@ void setup(){
 }
 void update(int x, int y) {
   
-  if (overCircle(circleX, circleY, circleSize) ) {
+  if (overCircle(circleX, circleY, circleSize) && pinventory.inInventory("Watering Can") ) {
     circleOver = true;
-    
   } 
+  else if (overCircle(newCircleX,newCircleY,newCircleSize) && pinventory.inInventory("Seeds")){
+    newCircleOver = true;
+  }
   else{
     circleOver = false;
+    newCircleOver = false;
   }
 }
 boolean overCircle(int x, int y, int diameter) {
