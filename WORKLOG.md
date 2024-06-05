@@ -62,3 +62,25 @@
 - made planting seeds like watering (click to plant)
 
 - added sprites to player, changes when watering (doesn't work for planting a seed, but not sure why)
+
+### 5/31/24
+
+- debugged methods (made the changing sprites when watering work)
+
+- changed background and updated coordinates to make more sense
+
+### 6/2/24 - 6/3/24
+
+- added harvesting mechanic
+
+- finished it on 6/3 and made the harvested crop show up in the inventory
+
+- added textboc class and the system prints now display on game screen
+
+### 6/5/24
+
+- added a dialouge box graphics
+
+- made it so that the textbox now displays on the dialouge box
+
+- tested the new buttons to switch from seed to water mode and vice versa, bugs sometimes (need to work on later!!)
