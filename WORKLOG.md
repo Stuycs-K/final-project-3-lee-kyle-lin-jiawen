@@ -84,3 +84,7 @@
 - made it so that the textbox now displays on the dialouge box
 
 - tested the new buttons to switch from seed to water mode and vice versa, bugs sometimes (need to work on later!!)
+
+### 6/7/2024
+
+- wrote README
