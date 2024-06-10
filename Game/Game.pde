@@ -131,7 +131,7 @@ void keyPressed(){
   if (key == '3' && shopMenuOpen) {
     if(pinventory.inInventory("Harvest")){
       textbox.update("You sold 1 crop\nand got 25 \ncoins!");
-      balance.addCoins(-25);
+      balance.addCoins(25);
       pinventory.removeItem("Harvest");
     }
     else{
