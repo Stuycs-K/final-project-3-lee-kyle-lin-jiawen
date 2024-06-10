@@ -14,10 +14,10 @@ class Farm{
         if(xMouse >=x && xMouse <= x+70 && yMouse >= y && yMouse <= y+50){
           if(farmLand[i][j] == null){
             farmLand[i][j] = Crop;
-            retVal = "You have planted a "+Crop.getCropName()+" at: ("+i+", "+j+")";
+            retVal = "You have planted\n a "+Crop.getCropName()+" \nat: ("+i+", "+j+")";
           }
           else{
-            retVal = "You already have a plant here! Cannot plant more.";
+            retVal = "You already have\n a plant here! \nCannot plant more.";
           }
         }
         x+=70;
@@ -39,10 +39,10 @@ class Farm{
         if(xMouse >=x && xMouse <= x+70 && yMouse >= y && yMouse <= y+50){
           if(farmLand[i][j] != null){
             farmLand[i][j].setGrowth();
-            retVal = "You have watered the plant at: ("+i+", "+j+")";
+            retVal = "You have watered \nthe plant at: \n("+i+", "+j+")";
           }
           else{
-            retVal = "There is no plant here, please plant a seed first!";
+            retVal = "There is no plant \nhere, please plant \na seed first!";
           }
         }
         x+=70;

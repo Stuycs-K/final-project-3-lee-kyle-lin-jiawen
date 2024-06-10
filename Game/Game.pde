@@ -10,6 +10,7 @@ boolean newCircleOver = false;
 Player p1;
 int speed = 10;
 float easing = 0.05;
+int countdown;
 PImage img;
 PImage img2;
 PImage npc;
@@ -230,6 +231,7 @@ void mouseClicked(){
         textbox.update("You do not\n have seeds, \nplease buy some!");
       }
     else if (mouseX > 100 && mouseX < 400 && mouseY > 600 && mouseY < 880){
+      selectedCrop = new Crops();
       textbox.update(farm.plantSeed(selectedCrop));
       PImage planting = loadImage("planting.png");
       p1.changeSprite(planting);
@@ -278,6 +280,7 @@ void mouseClicked(){
 
 void setup(){
   size(1000,1000);
+  countdown = 0;
   music = new SoundFile(this, "Music.mp3");
   music.play();
   music.loop();
