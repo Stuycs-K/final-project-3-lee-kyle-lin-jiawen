@@ -44,6 +44,7 @@ PImage title;
 int ShopX, ShopY; 
 int ShopSize = 43;
 boolean ShopOver = false;
+
 //
 //
 //click on something to change mode, implement later
@@ -168,7 +169,8 @@ void keyPressed(){
 
   }
 }
-void drawFarm(){
+}
+void drawFarm() {
   int x = 135;
   int y = 620;
   //mouseX > 100 && mouseX < 650 && mouseY > 600 && mouseY < 880
@@ -301,6 +303,7 @@ void setup(){
   dirt = loadImage("dirt.png");
   title = loadImage("Title.png");
   title.resize(1000,1000);
+  
   //
   circleColor = color(53, 95, 59);
   circleHighlight = color(204);
