@@ -1,3 +1,5 @@
+import processing.sound.*;
+SoundFile music;
 int circleX, circleY; 
 int circleSize = 43;
 color circleColor, circleHighlight;
@@ -21,6 +23,8 @@ PImage can;
 PImage seedling;
 PImage seed;
 PImage playerSprite;
+PImage dirt;
+PImage waterbar;
 boolean seedMode = false;
 boolean waterMode = false;
 int water = 20;
@@ -31,6 +35,11 @@ Shop theShop;
 Textbox textbox = new Textbox();
 boolean hasCan = false;
 boolean hasSeeds = false;
+boolean Starting = true;
+PImage title;
+int ShopX, ShopY; 
+int ShopSize = 43;
+boolean ShopOver = false;
 //
 //
 //click on something to change mode, implement later
@@ -38,60 +47,67 @@ Crops selectedCrop = new Wheat();
 //click to change crop, implement later
 Farm farm = new Farm();
 void draw(){
-  background(173,206,118);
-  image(grass, 0, 500);
-  fill(155,103,60);//brown
-  square(0, -500, 1000);
-  fill(135, 206, 250);//blue
-  square(0, -700, 1000);
-  image(sky, 0, 0);
-  image(img, 100, 600);
-  //image(img, 550, 600); for when we get shop working
-  image(img2, 700, 100);
-  image(pond, -250, 250);
-  image(inventory, 0,20);
-  image(gold,700,20);
-  shop.resize(300,200);
-  image(shop,200,150);
-  drawFarm();
-  p1.render();
-  //p1.move();
-  p1.update();
-  drawFarm();
-  if(shopMenuOpen){
-    textSize(30);
-    fill(0);
-    text("Press 1 to buy Water", 100, 140);
-    text("Press 2 to buy Seeds", 400, 140);
+  if (!Starting){
+    background(173,206,118);
+    image(grass, 0, 500);
+    fill(155,103,60);//brown
+    square(0, -500, 1000);
+    fill(135, 206, 250);//blue
+    square(0, -700, 1000);
+    image(sky, 0, 0);
+    image(img, 100, 600);
+    //image(img, 550, 600); for when we get shop working
+    image(img2, 700, 100);
+    image(dirt,0,-50);
+    image(pond, -250, 250);
+    image(inventory, 0,20);
+    image(gold,670,-25);
+    image(waterbar,670,15);
+    shop.resize(300,200);
+    image(shop,200,150);
+    drawFarm();
+    p1.render();
+    //p1.move();
+    p1.update();
+    drawFarm();
+    if(shopMenuOpen){
+      textSize(30);
+      fill(0);
+      text("Press 1 to buy Water", 100, 140);
+      text("Press 2 to buy Seeds", 400, 140);
+    }
+    if(pinventory.inInventory("Watering Can")){
+      can.resize(60,60);
+      image(can,10,30);
+    }
+    if(pinventory.inInventory("Seeds")){
+      seedling.resize(30,30);
+      image(seedling,70,45);
+    }
+    if(pinventory.inInventory("Harvest")){
+      seed.resize(65,65);
+      image(seed,100,27);
+    }
+    //
+    update(mouseX, mouseY);
+    if (circleOver) {
+      fill(circleHighlight);
+    } else {
+      fill(circleColor);
+    }
+    stroke(0);
+    //ellipse(newCircleX, newCircleY, circleSize, circleSize);
+    box = loadImage("dialouge.png");
+    box.resize(650,550);
+    image(box, 410, 300);
+    textbox.display();
+    playerSprite = loadImage("player.png");
+    playerSprite.resize(100, 150);
+    image(playerSprite, 830, 620);
   }
-  if(pinventory.inInventory("Watering Can")){
-    can.resize(60,60);
-    image(can,10,30);
+  else{
+    image(title,0,0);
   }
-  if(pinventory.inInventory("Seeds")){
-    seedling.resize(30,30);
-    image(seedling,70,45);
-  }
-  if(pinventory.inInventory("Harvest")){
-    seed.resize(65,65);
-    image(seed,100,27);
-  }
-  //
-  update(mouseX, mouseY);
-  if (circleOver) {
-    fill(circleHighlight);
-  } else {
-    fill(circleColor);
-  }
-  stroke(0);
-  //ellipse(newCircleX, newCircleY, circleSize, circleSize);
-  box = loadImage("dialouge.png");
-  box.resize(650,550);
-  image(box, 410, 300);
-  textbox.display();
-  playerSprite = loadImage("player.png");
-  playerSprite.resize(100, 150);
-  image(playerSprite, 830, 620);
 }
 void keyPressed(){
   if (key == 's' || key == 'S') {
@@ -112,6 +128,9 @@ void keyPressed(){
   if (key == 'p' || key == 'P') {
     seedMode= true;
     waterMode = false;
+  }
+  if (key == 'e'){
+    Starting = false;
   }
 }
 void drawFarm(){
@@ -139,7 +158,7 @@ void drawFarm(){
   }
   textSize(30);
   fill(0);
-  text("water: "+water, 750, 900);
+  text(water, 765, 105);
   text(balance.getCoins(),760,60);
   text("Press S to Open Shop", 700, 950);
 }
@@ -210,6 +229,9 @@ void mouseClicked(){
 
 void setup(){
   size(1000,1000);
+  music = new SoundFile(this, "Music.mp3");
+  music.play();
+  music.loop();
   p1 = new Player(width/2,height/2);
   img = loadImage("farm.png");
   img2 = loadImage("firsthouse.png");
@@ -219,11 +241,17 @@ void setup(){
   grass = loadImage("grassbetter.png");
   grass.resize(1000, 500);
   pond = loadImage("pond.png");
-  gold = loadImage("Gold.png");
+  gold = loadImage("GoldBar.png");
+  gold.resize(200,150);
+  waterbar = loadImage("WaterBar.png");
+  waterbar.resize(200,150);
   shop = loadImage("Cart.png");
   seedling = loadImage("Seedling.png");
   can = loadImage("Water.png");
   seed = loadImage("seeds.png");
+  dirt = loadImage("dirt.png");
+  title = loadImage("Title.png");
+  title.resize(1000,1000);
   //
   circleColor = color(53, 95, 59);
   circleHighlight = color(204);
