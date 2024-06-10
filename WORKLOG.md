@@ -88,3 +88,13 @@
 ### 6/7/2024
 
 - wrote README
+
+### 6/8/2024
+
+- made the NPC mechanic, forgot to add and commit until next day
+
+- click on NPC to get instructions, you can get one heart for 100 coins or 1 crop
+
+### 6/10/2024
+
+- made selling crop mechanic, can sell crops for 25 coins each
