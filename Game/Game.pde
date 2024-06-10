@@ -197,8 +197,10 @@ void drawFarm() {
   fill(0);
   text(water, 765, 105);
   text(balance.getCoins(),760,60);
-  text(hearts,760,110);
-  text("Press S to Open Shop", 700, 950);
+  heart.resize(40, 40);
+  image(heart, 500, 825);
+  text("Hearts: "+hearts,550,855);
+  text("Press S to Open Shop", 600, 980);
 }
 
 void mousePressed() {
