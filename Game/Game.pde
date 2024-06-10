@@ -83,6 +83,7 @@ void draw(){
       fill(0);
       text("Press 1 to buy Water", 100, 140);
       text("Press 2 to buy Seeds", 400, 140);
+      text("Press 3 to sell Crops (1 for 25 Coins)", 150, 390);
     }
     if(pinventory.inInventory("Watering Can")){
       can.resize(60,60);
@@ -151,6 +152,7 @@ void keyPressed(){
 
   if (key == 'e'){
     Starting = false;
+  }
 
   if (key == '0') {
     if(balance.getCoins() >= 100){
@@ -165,12 +167,7 @@ void keyPressed(){
         hearts ++;
       } 
     }
-    else{
-      textbox.update("You are broke.");
-    }
-
   }
-}
 }
 void drawFarm() {
   int x = 135;
