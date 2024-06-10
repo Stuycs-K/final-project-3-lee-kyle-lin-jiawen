@@ -69,6 +69,8 @@ void draw(){
     image(inventory, 0,20);
     image(gold,670,-25);
     image(waterbar,670,15);
+    npc.resize(80, 100);
+    image(npc, 550, 250);
     shop.resize(300,200);
     image(shop,200,150);
     drawFarm();
@@ -131,7 +133,7 @@ void keyPressed(){
   if (key == '3' && shopMenuOpen) {
     if(pinventory.inInventory("Harvest")){
       textbox.update("You sold 1 crop\nand got 25 \ncoins!");
-      balance.addCoins(25);
+      balance.addCoins(-25);
       pinventory.removeItem("Harvest");
     }
     else{
@@ -200,7 +202,7 @@ void drawFarm() {
   heart.resize(40, 40);
   image(heart, 500, 825);
   text("Hearts: "+hearts,550,855);
-  text("Press S to Open Shop", 600, 980);
+  //text("Press S to Open Shop", 600, 980);
 }
 
 void mousePressed() {
@@ -296,7 +298,7 @@ void setup(){
   gold.resize(200,150);
   waterbar = loadImage("WaterBar.png");
   waterbar.resize(200,150);
-
+  npc = loadImage("npc.png");
   shop = loadImage("Cart.png");
   heart = loadImage("heart.png");
   seedling = loadImage("Seedling.png");
