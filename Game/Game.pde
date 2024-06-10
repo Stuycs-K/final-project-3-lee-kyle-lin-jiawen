@@ -10,12 +10,14 @@ int speed = 10;
 float easing = 0.05;
 PImage img;
 PImage img2;
+PImage npc;
 PImage inventory;
 PImage sky;
 PImage grass;
 PImage box;
 PImage pond;
 PImage gold;
+PImage heart;
 PImage shop;
 PImage can;
 PImage seedling;
@@ -24,6 +26,8 @@ PImage playerSprite;
 boolean seedMode = false;
 boolean waterMode = false;
 int water = 20;
+Harvest crop;
+int hearts = 0;
 Coins balance;
 Inventory pinventory;
 boolean shopMenuOpen = false;
@@ -51,8 +55,12 @@ void draw(){
   image(pond, -250, 250);
   image(inventory, 0,20);
   image(gold,700,20);
+  heart.resize(45, 45);
+  image(heart,700,80);
   shop.resize(300,200);
   image(shop,200,150);
+  npc.resize(80, 100);
+  image(npc, 550, 250);
   drawFarm();
   p1.render();
   //p1.move();
@@ -63,6 +71,7 @@ void draw(){
     fill(0);
     text("Press 1 to buy Water", 100, 140);
     text("Press 2 to buy Seeds", 400, 140);
+    text("Press 3 to sell Crops (1 for 25 Coins)", 150, 390);
   }
   if(pinventory.inInventory("Watering Can")){
     can.resize(60,60);
@@ -105,6 +114,16 @@ void keyPressed(){
     theShop.buyItem("Seeds");
     hasSeeds = true;
   }
+  if (key == '3' && shopMenuOpen) {
+    if(pinventory.inInventory("Harvest")){
+      textbox.update("You sold 1 crop\nand got 25 \ncoins!");
+      balance.addCoins(-25);
+      pinventory.removeItem("Harvest");
+    }
+    else{
+      textbox.update("You don't have\ncrops, go grow\nsome.");
+    }
+  }
   if (key == 'w' || key == 'W') {
     seedMode= false;
     waterMode = true;
@@ -112,6 +131,40 @@ void keyPressed(){
   if (key == 'p' || key == 'P') {
     seedMode= true;
     waterMode = false;
+  }
+  if (key == '0') {
+    if(balance.getCoins() >= 100){
+      if(hearts == 9){
+        balance.addCoins(-100);
+        hearts ++;
+        textbox.update("You have 10\nhearts with her!\nYou are now friends.\nYou won the game!");
+      }
+      else{
+        textbox.update("You gave her 100\n coins! She said\n 'Thanks, I guess.'");
+        balance.addCoins(-100);
+        hearts ++;
+      } 
+    }
+    else{
+      textbox.update("You are broke.");
+    }
+  }
+  if (key == '9') {
+    if(pinventory.inInventory("Harvest")){
+      if(hearts == 9){
+        pinventory.removeItem("Harvest");
+        hearts ++;
+        textbox.update("You have 10\nhearts with her!\nYou are now friends.\nYou won the game!");
+      }
+      else{
+        pinventory.removeItem("Harvest");
+        textbox.update("You gave her crops!\nShe said 'Thanks, I \nguess'");
+        hearts ++;
+      }
+    }
+    else{
+      textbox.update("You don't have \ncrops, go plant \nsome.");
+    }
   }
 }
 void drawFarm(){
@@ -125,7 +178,7 @@ void drawFarm(){
           textbox.update("Plant harvested!");
           farm.farmLand[i][j].canHarvest = false;
           farm.farmLand[i][j] = null;
-          Harvest crop = new Harvest();
+          crop = new Harvest();
           pinventory.addItem(crop);
         }
         else{
@@ -141,6 +194,7 @@ void drawFarm(){
   fill(0);
   text("water: "+water, 750, 900);
   text(balance.getCoins(),760,60);
+  text(hearts,760,110);
   text("Press S to Open Shop", 700, 950);
 }
 
@@ -159,9 +213,17 @@ void mousePressed() {
 }
 
 void mouseClicked(){
+  if(mouseX >= 550 && mouseX <= 630 && mouseY >= 250 && mouseY <= 350){
+    textbox.update("Press 0 to give her\n 100 coins\nPress 9 to give her\n harvested crops");
+    textbox.display();
+  }
+  if(mouseX <= 50 && mouseY >=350&&mouseY<=450){
+    textbox.update("You got 1 water!");
+    water ++;
+  }
   if(seedMode){
     if(hasSeeds == false){
-        textbox.update("You do not have seeds, please buy some!");
+        textbox.update("You do not\n have seeds, \nplease buy some!");
       }
     else if (mouseX > 100 && mouseX < 400 && mouseY > 600 && mouseY < 880){
       textbox.update(farm.plantSeed(selectedCrop));
@@ -174,7 +236,7 @@ void mouseClicked(){
   if(waterMode){
     if (mouseX > 100 && mouseX < 400 && mouseY > 600 && mouseY < 880){
       if(hasCan == false){
-        textbox.update("You do not have a watering can, please buy one!");
+        textbox.update("You do not/n have a watering/n can, please buy /none!");
       }
       else if(water>0){
         water--;
@@ -185,10 +247,12 @@ void mouseClicked(){
         drawFarm();
       }
       else{
-        textbox.update("There's no water in the bucket! Please fetch more water.");
+        textbox.update("There's no water\n in the bucket! Please\n fetch more water.");
       }
     }
   }
+  //npc.resize(80, 100);
+  //image(npc, 550, 250);
   else{
     p1.changeSprite(loadImage("player.png"));
   }
@@ -220,7 +284,9 @@ void setup(){
   grass.resize(1000, 500);
   pond = loadImage("pond.png");
   gold = loadImage("Gold.png");
+  npc = loadImage("npc.png");
   shop = loadImage("Cart.png");
+  heart = loadImage("heart.png");
   seedling = loadImage("Seedling.png");
   can = loadImage("Water.png");
   seed = loadImage("seeds.png");
@@ -235,6 +301,8 @@ void setup(){
   pinventory = new Inventory();
   theShop = new Shop(pinventory, balance);
   ellipseMode(CENTER);
+  textbox.update("You want to\nbefriend Hailey.\nClick on her to see\nhow to gain her\nfriendship!");
+  textbox.display();
   
 }
 void update(int x, int y) {
