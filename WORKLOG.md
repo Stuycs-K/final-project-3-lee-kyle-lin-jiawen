@@ -13,10 +13,11 @@
 
 - Created 3 new basic crop classes(corn,grain,wheat).
 
-- Turned everything to processing
+- Turned everything to processing with basic setup(), draw()
 
 ### 5/27/24
 - Created the player which moves to where the mouse is pressed
+- Added a way so the player doesn't teleport but moves slowly
 
 ### 5/28/24
 - Added the farm class and changed the crops class to add the harvest feature for each crop
@@ -32,6 +33,16 @@
 
 ### 6/3/24
 - Two buttons changed to at the top of the inventory
+
+### 6/4/24  - 6/8/24
+- Changed background through photoshop to create a nice path
+- Created photoshop edit for shop that opens a nice menu when shopkeeper clicked
+- Drew pixel art for gold and water
+
+### 6/9/24
+- Added title screen
+- Added music
+- Added clicking shopkeeper opens menu
 
 ## Jiawen Lin
 
