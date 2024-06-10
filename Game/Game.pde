@@ -149,23 +149,6 @@ void keyPressed(){
       textbox.update("You are broke.");
     }
   }
-  if (key == '9') {
-    if(pinventory.inInventory("Harvest")){
-      if(hearts == 9){
-        pinventory.removeItem("Harvest");
-        hearts ++;
-        textbox.update("You have 10\nhearts with her!\nYou are now friends.\nYou won the game!");
-      }
-      else{
-        pinventory.removeItem("Harvest");
-        textbox.update("You gave her crops!\nShe said 'Thanks, I \nguess'");
-        hearts ++;
-      }
-    }
-    else{
-      textbox.update("You don't have \ncrops, go plant \nsome.");
-    }
-  }
 }
 void drawFarm(){
   int x = 135;
@@ -214,7 +197,7 @@ void mousePressed() {
 
 void mouseClicked(){
   if(mouseX >= 550 && mouseX <= 630 && mouseY >= 250 && mouseY <= 350){
-    textbox.update("Press 0 to give her\n 100 coins\nPress 9 to give her\n harvested crops");
+    textbox.update("Press 0 to give her\n 100 coins");
     textbox.display();
   }
   if(mouseX <= 50 && mouseY >=350&&mouseY<=450){
